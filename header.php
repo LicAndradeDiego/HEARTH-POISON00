@@ -62,7 +62,7 @@ nav a:hover, nav a.active {
             <a href="paginaprincipal.php" class="active">Inicio</a>
             <a href="paginanosotros.php">Nosotros</a>
             <a href="paginaproductos.php">Productos</a>
-            <a href="/usuario/paginasesion.php">Iniciar Sesión</a>
+            <a href="usuario/paginasesion.php">Iniciar Sesión</a>
         </nav>
     </header>
 </body>
