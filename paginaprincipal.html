@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hearth Poison</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial;
+}
+
+body{
+  background:#000;
+  color:white;
+  overflow-x:hidden;
+}
+
+
+
+
+@keyframes zoomHero{
+  from{
+    transform:scale(1);
+  }
+
+  to{
+    transform:scale(1.08);
+  }
+}
+
+
+
+#uriii{
+  background:#111;
+  padding:20px;
+  text-align:center;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  animation:aparecer 1s ease;
+}
+
+#uriiii{
+  color:red;
+  margin-bottom:10px;
+  font-size:35px;
+  letter-spacing:3px;
+  animation:brillo 3s infinite;
+}
+
+#uriiiii a{
+  color:white;
+  margin:10px;
+  text-decoration:none;
+  transition:.3s;
+}
+
+#uriiiii a:hover{
+  color:red;
+  transform:scale(1.1);
+}
+
+/* HERO */
+
+#manci{
+  height:100vh;
+  background:
+  linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
+  url("https://images.unsplash.com/photo-1523293182086-7651a899d37f?q=80&w=2070&auto=format&fit=crop")
+  center/cover;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+
+  animation:zoomHero 8s infinite alternate;
+}
+
+#mancii{
+  background:rgba(0,0,0,.5);
+  padding:50px;
+  border-radius:15px;
+  animation:aparecer 1.5s ease;
+}
+
+#mancii h2{
+  font-size:70px;
+  color:red;
+  margin-bottom:15px;
+}
+
+#mancii p{
+  font-size:20px;
+  color:#ddd;
+}
+
+/* BOTON */
+
+#botoonn{
+  display:inline-block;
+  margin-top:25px;
+  padding:12px 30px;
+  border:2px solid red;
+  color:white;
+  text-decoration:none;
+  transition:.3s;
+  animation:brillo 2s infinite;
+}
+
+#botoonn:hover{
+  background:red;
+  transform:scale(1.08);
+}
+
+/* SECCIONES */
+
+#sapo{
+  padding:70px 20px;
+  text-align:center;
+  animation:aparecer 1.5s ease;
+}
+
+#sapo h2{
+  color:red;
+  margin-bottom:20px;
+  font-size:40px;
+}
+
+#sapo p{
+  color:#ccc;
+  max-width:700px;
+  margin:auto;
+  line-height:1.7;
+}
+
+/* CARDS */
+
+#cubaa{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+  justify-content:center;
+  margin-top:40px;
+}
+
+#cubix{
+  background:#111;
+  width:300px;
+  padding:15px;
+  border-radius:15px;
+  transition:.4s;
+  animation:aparecer 1.2s ease;
+}
+
+#cubix:hover{
+  transform:translateY(-10px) scale(1.03);
+  box-shadow:0 0 20px red;
+}
+
+#cubix img{
+  width:100%;
+  height:350px;
+  object-fit:cover;
+  border-radius:10px;
+  transition:.4s;
+}
+
+#cubix:hover img{
+  transform:scale(1.05);
+}
+
+#cubix h3{
+  color:red;
+  margin:15px 0;
+}
+
+#cubix p{
+  color:#bbb;
+}
+
+/* FOOTER */
+
+#sapito{
+  background:#111;
+  text-align:center;
+  padding:30px;
+  margin-top:40px;
+  animation:aparecer 1.5s ease;
+}
+
+#sapito h3{
+  color:red;
+  margin-bottom:10px;
+}
+
+/* MEDIA */
+
+@media(max-width:768px){
+
+  #uriiii{
+    font-size:25px;
+  }
+
+  #uriiiii{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+
+  #mancii h2{
+    font-size:40px;
+  }
+
+  #mancii p{
+    font-size:16px;
+  }
+
+  #cubix{
+    width:100%;
+  }
+
+  #sapo h2{
+    font-size:30px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header id="uriii">
+
+  <h1 id="uriiii">HEARTH POISON</h1>
+
+  <nav id="uriiiii">
+    <a href="#">Inicio</a>
+    <a href="#">Luxury</a>
+    <a href="#">Productos</a>
+    <a href="#">Galería</a>
+  </nav>
+
+</header>
+
+<div id="manci">
+
+  <div id="mancii">
+
+    <h2>HEARTH POISON</h2>
+
+    <p>
+      Veneno en la piel, poder en el aire
+    </p>
+
+    <a href="#" id="botoonn">
+      DESCUBRIR
+    </a>
+
+  </div>
+
+</div>
+
+<section id="sapo">
+
+  <h2>LUXURY</h2>
+
+  <p>
+    Elegancia, oscuridad y lujo moderno.
+    Diseñado para personas con presencia fuerte
+    y esencia exclusiva.
+  </p>
+
+</section>
+
+<section id="sapo">
+
+  <h2>PRODUCTOS</h2>
+
+  <div id="cubaa">
+
+    <div id="cubix">
+      <img src="PPP.webp">
+      <h3>ACQUA DI GIO</h3>
+      <p>Elegancia masculina.</p>
+    </div>
+
+    <div id="cubix">
+      <img src="JJJ.avif">
+      <h3>VERSACE EROS</h3>
+      <p>Oscuridad elegante.</p>
+    </div>
+
+    <div id="cubix">
+      <img src="pppp.webp">
+      <h3>LE BEAU PARADISE</h3>
+      <p>Diseñado para destacar.</p>
+    </div>
+
+  </div>
+
+</section>
+
+<footer id="sapito">
+
+  <h3>HEARTH POISON</h3>
+
+  <p>
+    Luxury • Style • Power
+  </p>
+
+</footer>
+
+</body>
+</html>

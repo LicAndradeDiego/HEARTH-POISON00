@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        footer {
+    background: #0a0a0a;
+    border-top: 1px solid #1a1a1a;
+    padding: 80px 40px 40px 40px;
+    margin-top: 100px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-brand h3 {
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.footer-info p {
+    color: #666;
+    font-size: 13px;
+    letter-spacing: 1px;
+    line-height: 2;
+}
+    </style>
+</head>
+<body>
+     <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>HEARTH POISON</h3>
+                <p style="color: #666; font-size: 12px; letter-spacing: 2px;">LUXURY • STYLE • POWER</p>
+            </div>
+            <div class="footer-info">
+                <p>📍 Cochabamba - Bolivia</p>
+                <p>📞 +591 70000000 | contacto@hearthpoison.com</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
