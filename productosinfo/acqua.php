@@ -31,9 +31,7 @@
             <p class="precio">
                 Bs.550
             </p>
-            <a href="../pedidos/crearpedido.php">
-                <button>Añadir al carrito</button>
-            </a>
+            <button type="button" onclick="window.location.href='../paginaproductos.php'">Volver al catálogo</button>
         </section>
     </section>
     <?php include '../footer.php'; ?>
