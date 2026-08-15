@@ -9,11 +9,16 @@
         * {
             text-decoration: none;
         }
+        .card-link {
+            display: block;
+            color: inherit;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
 
-  <?php include 'header.php'; ?>
+    <?php include 'header.php'; ?>
 
     <main>
         <section class="animate-fade">
@@ -21,8 +26,9 @@
             
             <div class="cards-grid">
                 
+                <!-- PRODUCTO 1: Acqua Di Gio -->
                 <div class="product-card">
-                    <a href="productosinfo/acqua.php" class="card-link">
+                    <a href="productos/productosinfo/acqua.php" class="card-link">
                         <div class="img-container">
                             <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?q=80&w=600&auto=format&fit=crop" alt="Acqua Di Gio">
                         </div>
@@ -35,8 +41,9 @@
                     <button class="btn-add" onclick="agregarAlCarrito('Acqua Di Gio', 550)">Añadir al Carrito</button>
                 </div>
 
+                <!-- PRODUCTO 2: Versace Eros -->
                 <div class="product-card">
-                    <a href="productosinfo/eros.php" class="card-link">
+                    <a href="productos/productosinfo/eros.php" class="card-link">
                         <div class="img-container">
                             <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?q=80&w=600&auto=format&fit=crop" alt="Versace Eros">
                         </div>
@@ -49,8 +56,9 @@
                     <button class="btn-add" onclick="agregarAlCarrito('Versace Eros', 650)">Añadir al Carrito</button>
                 </div>
 
+                <!-- PRODUCTO 3: Le Beau Paradise -->
                 <div class="product-card">
-                    <a href="productosinfo/paradise.php" class="card-link">
+                    <a href="productos/productosinfo/paradise.php" class="card-link">
                         <div class="img-container">
                             <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?q=80&w=600&auto=format&fit=crop" alt="Le Beau">
                         </div>
@@ -63,8 +71,9 @@
                     <button class="btn-add" onclick="agregarAlCarrito('Le Beau Paradise', 700)">Añadir al Carrito</button>
                 </div>
 
+                <!-- PRODUCTO 4: Bleu De Chanel -->
                 <div class="product-card">
-                    <a href="productosinfo/bleu.php" class="card-link">
+                    <a href="productos/productosinfo/bleu.php" class="card-link">
                         <div class="img-container">
                             <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?q=80&w=600&auto=format&fit=crop" alt="Bleu de Chanel">
                         </div>
@@ -81,6 +90,7 @@
         </section>
     </main>
 
+    <!-- CARRITO LATERAL -->
     <div id="cart-overlay" class="cart-overlay" onclick="cerrarCarrito()"></div>
     <div id="side-cart" class="side-cart">
         <div class="cart-header">
@@ -101,7 +111,7 @@
                 <span>Total:</span>
                 <span id="cart-total">Bs. 0.00</span>
             </div>
-            <button class="btn-checkout" onclick="window.location.href='pedidos/crearpedido.php'">Finalizar compra</button>
+            <button class="btn-checkout" onclick="window.location.href='Ventas/crearpedido.php'">Finalizar compra</button>
             <button class="btn-vaciar" onclick="vaciarCarrito()">Vaciar carrito</button>
         </div>
     </div>
@@ -115,12 +125,10 @@
         function agregarAlCarrito(nombre, precio) {
             const itemsContainer = document.getElementById('cart-items');
             
-            // Si es el primer producto, limpiamos el mensaje de "vacío"
             if (cantidad === 0) {
                 itemsContainer.innerHTML = '';
             }
 
-            // Agregamos el producto a la lista
             const itemHTML = `
                 <div class="cart-item">
                     <div>
@@ -131,14 +139,12 @@
             `;
             itemsContainer.innerHTML += itemHTML;
 
-            // Actualizamos totales
             cantidad++;
             total += precio;
 
             document.getElementById('cart-count').innerText = cantidad;
             document.getElementById('cart-total').innerText = 'Bs. ' + total.toFixed(2);
 
-            // Abrimos el carrito lateral automáticamente
             abrirCarrito();
         }
 

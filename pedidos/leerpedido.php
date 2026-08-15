@@ -4,7 +4,7 @@ $username = "root";
 $password = "";
 $bdname = "proyetocuba";
 
-$conn = new mysqli($servername,$username, $password,$bdname);
+$conn = new mysqli($servername, $username, $password, $bdname);
 
 if ($conn->connect_error) {
     die("Conexion fallida: " . $conn->connect_error);
@@ -106,6 +106,7 @@ button {
     text-transform: uppercase;
     cursor: pointer;
     transition: .3s ease;
+    margin: 2px;
 }
 
 .editar {
@@ -280,6 +281,9 @@ a {
                         </a>
                         <a href='eliminarpedido.php?id=$id' onclick=\"return confirm('¿Estás seguro de eliminar este pedido?');\">
                             <button class='eliminar'>Eliminar</button>
+                        </a>
+                        <a href='mostrardetalle.php?id=$id'>
+                            <button class='mostrar'>Detalle</button>
                         </a>
                     </td>
                 </tr>";
