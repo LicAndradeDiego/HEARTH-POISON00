@@ -18,7 +18,7 @@
             <p class="categoria">Perfume de varón</p>
             <h1>Versace Eros </h1>
             <h2>Versace</h2>
-            <p class="desc">Versace Eros es una fragancia intensa y seductora inspirada en la pasión, la fuerza y la confianza. Su 
+            <p class="desc">Versace Eros es una fragancia intensa y seductora e inspirada  en la pasión, la fuerza y la confianza. Su 
                 apertura fresca combina notas de menta, limón y manzana verde, que evolucionan hacia un corazón aromático y 
                 sofisticado. El fondo de vainilla, cedro y vetiver aporta profundidad y un carácter irresistible que deja una 
                 impresión duradera.</p>

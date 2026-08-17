@@ -6,7 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="estilocproc.css">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">  
-</head>
+</head>¡
 <body>
      <?php include '../header.php'; ?>
     <section class="principal" >
