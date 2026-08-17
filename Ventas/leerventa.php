@@ -1,28 +1,24 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
 $servername = "localhost";
 $username = "root";
 $password = "";
-$bdname = "proyetocuba"; 
+$bdname = "proyetocuba";
 
-$conn = new mysqli($servername, $username, $password, $bdname);
+$conn = new mysqli($servername,$username, $password,$bdname);
 
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-// CORREGIDO: Consulta a la tabla exacta 'usuario'
-$sql = "SELECT * FROM usuario";
+$sql = "SELECT * FROM ventas";
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GESTIÓN DE USUARIOS</title>
+    <title>GESTIÓN DE VENTAS</title>
     <style>
         * {
             margin: 0;
@@ -43,7 +39,7 @@ $sql = "SELECT * FROM usuario";
 
         .contenedor {
             width: 100%;
-            max-width: 1100px;
+            max-width: 1000px;
             background: #0f0f0f;
             border: 1px solid #1a1a1a;
             padding: 40px;
@@ -108,6 +104,7 @@ $sql = "SELECT * FROM usuario";
             transition: 0.3s ease;
         }
 
+        /* Botones de acción */
         .btn {
             border: 1px solid transparent;
             padding: 8px 14px;
@@ -146,25 +143,14 @@ $sql = "SELECT * FROM usuario";
             color: #fff;
         }
 
-        .bloquear {
+        .eliminar {
             background: #ff4d4d1a;
             color: #ff4d4d;
             border-color: #ff4d4d4d;
         }
 
-        .bloquear:hover {
+        .eliminar:hover {
             background: #ff4d4d;
-            color: #000;
-        }
-
-        .desbloquear {
-            background: #4dff881a;
-            color: #4dff88;
-            border-color: #4dff884d;
-        }
-
-        .desbloquear:hover {
-            background: #4dff88;
             color: #000;
         }
 
@@ -193,43 +179,25 @@ $sql = "SELECT * FROM usuario";
             justify-content: center;
             margin-top: 10px;
         }
-
-        .estado-badge {
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 10px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-
-        .estado-activo {
-            color: #4dff88;
-        }
-
-        .estado-bloqueado {
-            color: #ff4d4d;
-        }
     </style>
 </head>
 <body>
 
-<?php include '../header.php'; ?>
+<?php include_once "../header.php"; ?>
 
 <div class="contenedor">
-    <h1>Gestión de Usuarios</h1>
-    <p class="subtitulo">Lista completa de usuarios registrados</p>
+
+    <h1>Gestión de Ventas</h1>
+    <p class="subtitulo">Lista completa de ventas registradas</p>
 
     <div class="tabla-contenedor">
         <table class="tabla-estilo">
             <thead>
                 <tr>
-                    <th>CI</th>
-                    <th>Nombre</th>
-                    <th>Dirección</th>
-                    <th>Celular</th>
-                    <th>Rol</th>
+                    <th>ID Pedido</th>
+                    <th>Costo Total</th>
                     <th>Estado</th>
+                    <th>Método</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -237,41 +205,24 @@ $sql = "SELECT * FROM usuario";
             <?php
             $resultado = $conn->query($sql);
 
-            if ($resultado && $resultado->num_rows > 0) {
-                while($fila = $resultado->fetch_assoc()) {
-                    $CI = htmlspecialchars($fila['CI']);
-                    
-                    // Mapeo exacto de los campos de tu BD
-                    $nombre = htmlspecialchars($fila['nombre']);
-                    $direccion = htmlspecialchars($fila['direccion']);
-                    $celular = htmlspecialchars($fila['celular']);
-                    $rol = htmlspecialchars($fila['rol']);
-                    $estado = htmlspecialchars($fila['estado']);
-
-                    $estadoClase = (strtolower($estado) == 'activo') ? 'estado-activo' : 'estado-bloqueado';
+            if ($resultado &&$resultado->num_rows > 0) {
+                while($fila =$resultado->fetch_assoc()) {
+                    $pedidos_id = htmlspecialchars($fila['pedidos_id']);
 
                     echo "<tr>";
-                    echo "<td>" . $CI . "</td>";
-                    echo "<td>" . $nombre . "</td>";
-                    echo "<td>" . $direccion . "</td>";
-                    echo "<td>" . $celular . "</td>";
-                    echo "<td>" . $rol . "</td>";
-                    echo "<td><span class='estado-badge $estadoClase'>" . $estado . "</span></td>";
+                    echo "<td>" . $pedidos_id . "</td>";
+                    echo "<td>Bs. " . htmlspecialchars($fila['costoTotal']) . "</td>";
+                    echo "<td>" . htmlspecialchars($fila['estado']) . "</td>";
+                    echo "<td>" . htmlspecialchars($fila['metodo']) . "</td>";
                     echo "<td>";
-                    echo "<a href='actualizarusuario.php?CI=$CI' class='btn editar'>Editar</a>";
-                    echo "<a href='mostrarusuario.php?CI=$CI' class='btn mostrar'>Mostrar</a>";
-
-                    if (strtolower($estado) == "activo") {
-                        echo "<a href='bloquear.php?CI=$CI' class='btn bloquear'>Bloquear</a>";
-                    } else {
-                        echo "<a href='desbloquear.php?CI=$CI' class='btn desbloquear'>Desbloquear</a>";
-                    }
-
+                    echo "<a href='actualizarventa.php?pedidos_id=$pedidos_id' class='btn editar'>Editar</a>";
+                    echo "<a href='mostrarventa.php?pedidos_id=$pedidos_id' class='btn mostrar'>Mostrar</a>";
+                    echo "<a href='eliminarventa.php?pedidos_id=$pedidos_id' class='btn eliminar'>Eliminar</a>";
                     echo "</td>";
                     echo "</tr>";
                 }
             } else {
-                echo "<tr><td colspan='7' style='color:#666;'>No hay usuarios registrados</td></tr>";
+                echo "<tr><td colspan='5' style='color:#666;'>No hay ventas registradas</td></tr>";
             }
             $conn->close();
             ?>
@@ -280,9 +231,9 @@ $sql = "SELECT * FROM usuario";
     </div>
 
     <div class="boton-centro">
-        <a href="crearusuario.php" class="nuevo">Nuevo Usuario</a>
+        <a href="crearventa.php" class="nuevo">Nueva Venta</a>
     </div>
-</div>
 
+</div>
 </body>
 </html>

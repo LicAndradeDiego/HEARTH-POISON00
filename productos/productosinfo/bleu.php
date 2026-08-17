@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="estilocproc.css">
+    <link rel="stylesheet" href="../../estilocproc.css">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">  
 </head>
 <body>
-     <?php include '../header.php'; ?>
+     <?php include '../../header.php'; ?>
     <section class="principal" >
         <section class="imagen">
              <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?q=80&w=600&auto=format&fit=crop" alt="Bleu de Chanel">
@@ -16,7 +16,7 @@
         </section>
         <section class="informacion">
             <p class="categoria">Perfume de varón</p>
-            <h1>Bleu De Chanel<h1>
+            <h1>Bleu De Chanel</h1>
             <h2>Chanel</h2>
             <p class="desc">Una fragancia sofisticada y atemporal que representa la libertad, la confianza y la elegancia masculina. Bleu de Chanel combina la frescura vibrante de los cítricos con notas aromáticas y amaderadas que crean un aroma refinado, versátil y profundamente cautivador.
 
@@ -34,6 +34,6 @@ Duración: Excelente fijación con una proyección equilibrada y refinada.
                 <button>Añadir al carrito</button>
             </a>    </section>
     </section>
-    <?php include '../footer.php'; ?>
+    <?php include '../../footer.php'; ?>
 </body>
 </html>

@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="estilocproc.css">
+    <link rel="stylesheet" href="../../estilocproc.css">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">  
 </head>
 <body>
-     <?php include '../header.php'; ?>
+     <?php include '../../header.php'; ?>
     <section class="principal" >
         <section class="imagen">
                 <img src="https://images.unsplash.com/photo-1616949755610-8c9bbc08f138?q=80&w=600&auto=format&fit=crop" alt="Libre">
@@ -35,6 +35,6 @@ Duración: Prolongada, con una presencia envolvente y sofisticada.
                 <button>Añadir al carrito</button>
             </a>       </section>
     </section>
-    <?php include '../footer.php'; ?>
+    <?php include '../../footer.php'; ?>
 </body>
 </html>

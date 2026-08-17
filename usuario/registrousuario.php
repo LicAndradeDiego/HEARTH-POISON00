@@ -24,7 +24,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $rol = $_POST['Rol'];
     $estado = $_POST['Estado'];
 
-
     $verificar = $conexion->prepare("SELECT CI FROM usuario WHERE CI = ?");
     $verificar->bind_param("i", $ci);
     $verificar->execute();
@@ -48,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $resultado = false;
             $tipo = "error";
             $titulo = "Error";
-            $mensaje = "No se pudo registrar el usuario.";
+            $mensaje = "No se pudo registrar el usuario en la BD.";
         }
 
         $sql->close();
@@ -192,7 +191,7 @@ if($resultado){
 }
 ?>
 
-    <a class="boton" href="paginasesion.php">Volver</a>
+    <a class="boton" href="leerusuario.php">Volver</a>
 
 </div>
 
