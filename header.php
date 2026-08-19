@@ -253,10 +253,10 @@
         <h1>HEARTH POISON</h1>
         
         <nav>
-            <a href="paginaprincipal.php" class="active">Inicio</a>
-            <a href="paginanosotros.php">Nosotros</a>
-            <a href="paginaproductos.php">Productos</a>
-            <a href="usuario/paginasesion.php">Iniciar Sesión</a>
+            <a href="/HEARTH-POISON00/paginaprincipal.php">Inicio</a>
+<a href="/HEARTH-POISON00/paginanosotros.php">Nosotros</a>
+<a href="/HEARTH-POISON00/paginaproductos.php">Productos</a>
+<a href="/HEARTH-POISON00/usuario/paginasesion.php">Iniciar Sesión</a>
         </nav>
 
         <!-- Botón del Carrito en la esquina superior derecha -->
