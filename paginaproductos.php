@@ -112,7 +112,7 @@
                 <span id="cart-total">Bs. 0.00</span>
             </div>
             <button class="btn-checkout" onclick="window.location.href='Ventas/crearpedido.php'">Finalizar compra</button>
-            <button class="btn-vaciar" onclick="vaciarCarrito()">Vaciar carrito</button>
+            <button class="btn-vaciar" onclick="vaciarCarrito()">Vaciar carrito de uriel wazaa</button>
         </div>
     </div>
 
