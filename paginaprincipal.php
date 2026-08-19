@@ -24,8 +24,8 @@
             <h2 class="section-title">Las Colecciones</h2>
             <div class="grid-editorial">
                 <div class="box-editorial">
-                    <h3>Odyssey Mandarin Sky</h3>
-                    <p>Olores imprecnados de un dulce aroma a implecables lugares que te haran volar de frescura</p>
+                    <h3>L'Homme Intense</h3>
+                    <p>Fragancias arquitectónicas, estructuradas con maderas preciosas y notas de cuero negro. Diseñadas para una presencia imponente.</p>
                 </div>
                 <div class="box-editorial">
                     <h3>Femme Absolu</h3>

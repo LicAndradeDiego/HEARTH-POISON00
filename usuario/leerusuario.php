@@ -1,286 +1,267 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
 $servername = "localhost";
 $username = "root";
 $password = "";
-$bdname = "proyetocuba"; 
+$bdname = "proyetocuba";
 
 $conn = new mysqli($servername, $username, $password, $bdname);
 
 if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
+    die("Conexion fallida: " . $conn->connect_error);
 }
 
-// CORREGIDO: Consulta a la tabla exacta 'usuario'
 $sql = "SELECT * FROM usuario";
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GESTIÓN DE USUARIOS</title>
+    <title>Gestión de Usuarios</title>
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
-        body {
-            background: #090909;
-            color: #fff;
+        body{
             min-height: 100vh;
-            padding: 40px 20px;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-        }
-
-        .contenedor {
-            width: 100%;
-            max-width: 1100px;
-            background: #0f0f0f;
-            border: 1px solid #1a1a1a;
-            padding: 40px;
-            border-radius: 18px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-            margin-top: 20px;
-        }
-
-        h1 {
-            text-align: center;
-            font-size: 24px;
-            font-weight: 300;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
-
-        .subtitulo {
-            text-align: center;
-            color: #888;
-            font-size: 11px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 35px;
-        }
-
-        .tabla-contenedor {
-            width: 100%;
+            background: #0a0a0a;
+            padding: 120px 40px 40px 40px;
+            position: relative;
             overflow-x: auto;
         }
 
-        .tabla-estilo {
+       
+
+        .capa{
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            margin-bottom: 30px;
+            height: 100%;
+            background: rgba(0,0,0,0.60);
+            z-index: -1;
         }
 
-        .tabla-estilo th {
-            background: #141414;
-            color: #aaa;
-            padding: 16px;
-            font-size: 11px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 600;
-            border-bottom: 1px solid #2a2a2a;
-            text-align: center;
+        .contenedor{
+            width: 95%;
+            max-width: 1300px;
+            margin: auto;
+            background: rgba(20,20,20,0.90);
+            padding: 35px;
+            border-radius: 15px;
+            border: 3px solid rgba(255, 75, 246, 0.83);
+            box-shadow: 0 0 30px rgba(0,0,0,.6);
+            backdrop-filter: blur(4px);
         }
 
-        .tabla-estilo td {
-            padding: 16px;
-            text-align: center;
-            background: transparent;
-            border-bottom: 1px solid #1a1a1a;
-            color: #eee;
-            font-size: 13px;
+        h1{
+            text-align:center;
+            color:white;
+            font-weight:300;
+            letter-spacing:4px;
+            text-transform:uppercase;
+            margin-bottom:10px;
         }
 
-        .tabla-estilo tr:hover td {
-            background: #151515;
-            transition: 0.3s ease;
+        .subtitulo{
+            text-align:center;
+            color:#d0d0d0;
+            margin-bottom:30px;
+            font-size:14px;
+            letter-spacing:1px;
         }
 
-        .btn {
-            border: 1px solid transparent;
-            padding: 8px 14px;
-            border-radius: 6px;
-            font-size: 10px;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s ease;
-            margin: 2px;
-            text-decoration: none;
-            display: inline-block;
+        .tabla-responsive{
+            overflow-x:auto;
+            border-radius: 12px;
         }
 
-        .editar {
-            background: transparent;
-            color: #fff;
-            border-color: #333;
+        .tabla-estilo{
+            width:100%;
+            border-collapse: collapse;
+            min-width: 950px;
+            overflow: hidden;
+            border-radius: 12px;
         }
 
-        .editar:hover {
-            background: #fff;
-            color: #000;
-            border-color: #fff;
-        }
-
-        .mostrar {
-            background: transparent;
-            color: #aaa;
-            border-color: #222;
-        }
-
-        .mostrar:hover {
-            background: #222;
-            color: #fff;
-        }
-
-        .bloquear {
-            background: #ff4d4d1a;
-            color: #ff4d4d;
-            border-color: #ff4d4d4d;
-        }
-
-        .bloquear:hover {
-            background: #ff4d4d;
-            color: #000;
-        }
-
-        .desbloquear {
-            background: #4dff881a;
-            color: #4dff88;
-            border-color: #4dff884d;
-        }
-
-        .desbloquear:hover {
-            background: #4dff88;
-            color: #000;
-        }
-
-        .nuevo {
-            padding: 14px 28px;
-            background: #fff;
-            color: #000;
-            border-radius: 8px;
-            font-size: 11px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-weight: bold;
-            transition: 0.4s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .nuevo:hover {
-            background: #000;
-            color: #fff;
-            border: 1px solid #fff;
-        }
-
-        .boton-centro {
-            display: flex;
-            justify-content: center;
-            margin-top: 10px;
-        }
-
-        .estado-badge {
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 10px;
+        .tabla-estilo th{
+            background: rgba(255, 75, 246, 0.83);
+            color: white;
+            padding: 15px;
+            font-size: 14px;
             letter-spacing: 1px;
             text-transform: uppercase;
-            font-weight: bold;
         }
 
-        .estado-activo {
-            color: #4dff88;
+        .tabla-estilo td{
+            padding: 14px;
+            text-align: center;
+            background: rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            color: white;
         }
 
-        .estado-bloqueado {
-            color: #ff4d4d;
+        .tabla-estilo tr:hover td{
+            background: rgba(255,255,255,0.10);
+            transition: 0.3s;
+        }
+
+        button{
+            border:none;
+            padding:10px 15px;
+            border-radius:8px;
+            font-weight:500;
+            cursor:pointer;
+            transition:0.3s;
+            margin:2px;
+        }
+
+        .editar{
+            background:#ff4bf6;
+            color:white;
+        }
+
+        .editar:hover{
+            background:#e13ad8;
+            transform:scale(1.05);
+        }
+
+        .mostrar{
+            background:transparent;
+            color:white;
+            border:1px solid white;
+        }
+
+        .mostrar:hover{
+            background:white;
+            color:black;
+            transform:scale(1.05);
+        }
+
+        .nuevo{
+            margin-top:25px;
+            background:transparent;
+            border:1px solid white;
+            color:white;
+            font-size:15px;
+            padding:12px 22px;
+            letter-spacing:2px;
+            text-transform:uppercase;
+        }
+
+        .nuevo:hover{
+            background:white;
+            color:black;
+            transform:scale(1.05);
+        }
+
+        .boton-centro{
+            display:flex;
+            justify-content:center;
+            margin-top:25px;
+        }
+
+        .sin-registros{
+            text-align:center;
+            color:white;
+            padding:20px;
+        }
+
+        @media (max-width: 768px){
+            body{
+                padding: 100px 15px 20px 15px;
+            }
+
+            .contenedor{
+                padding: 20px;
+            }
+
+            h1{
+                font-size: 26px;
+                letter-spacing: 2px;
+            }
+
+            .subtitulo{
+                font-size: 13px;
+            }
+
+            button{
+                padding:8px 12px;
+                font-size:12px;
+            }
+
+            .nuevo{
+                width:100%;
+            }
         }
     </style>
 </head>
 <body>
 
 <?php include '../header.php'; ?>
+<div class="capa"></div>
 
 <div class="contenedor">
     <h1>Gestión de Usuarios</h1>
     <p class="subtitulo">Lista completa de usuarios registrados</p>
 
-    <div class="tabla-contenedor">
+    <div class="tabla-responsive">
         <table class="tabla-estilo">
-            <thead>
-                <tr>
-                    <th>CI</th>
-                    <th>Nombre</th>
-                    <th>Dirección</th>
-                    <th>Celular</th>
-                    <th>Rol</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
+            <tr>
+                <th>CI</th>
+                <th>Nombre</th>
+                <th>Dirección</th>
+                <th>Celular</th>
+                <th>Rol</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+
             <?php
             $resultado = $conn->query($sql);
 
-            if ($resultado && $resultado->num_rows > 0) {
-                while($fila = $resultado->fetch_assoc()) {
-                    $CI = htmlspecialchars($fila['CI']);
-                    
-                    // Mapeo exacto de los campos de tu BD
-                    $nombre = htmlspecialchars($fila['nombre']);
-                    $direccion = htmlspecialchars($fila['direccion']);
-                    $celular = htmlspecialchars($fila['celular']);
-                    $rol = htmlspecialchars($fila['rol']);
-                    $estado = htmlspecialchars($fila['estado']);
+            if ($resultado->num_rows > 0){
+                while($fila = $resultado->fetch_assoc()){
+                    $CI = $fila['CI'];
+                    echo "<tr>
+                            <td>".$fila['CI']."</td>
+                            <td>".$fila['nombre']."</td>
+                            <td>".$fila['direccion']."</td>
+                            <td>".$fila['celular']."</td>
+                            <td>".$fila['rol']."</td>
+                            <td>".$fila['estado']."</td>
+                            <td>
+                                <a href='actualizarusuario.php?CI=$CI'>
+                                    <button class='editar'>Editar</button>
+                                </a>
 
-                    $estadoClase = (strtolower($estado) == 'activo') ? 'estado-activo' : 'estado-bloqueado';
-
-                    echo "<tr>";
-                    echo "<td>" . $CI . "</td>";
-                    echo "<td>" . $nombre . "</td>";
-                    echo "<td>" . $direccion . "</td>";
-                    echo "<td>" . $celular . "</td>";
-                    echo "<td>" . $rol . "</td>";
-                    echo "<td><span class='estado-badge $estadoClase'>" . $estado . "</span></td>";
-                    echo "<td>";
-                    echo "<a href='actualizarusuario.php?CI=$CI' class='btn editar'>Editar</a>";
-                    echo "<a href='mostrarusuario.php?CI=$CI' class='btn mostrar'>Mostrar</a>";
-
-                    if (strtolower($estado) == "activo") {
-                        echo "<a href='bloquear.php?CI=$CI' class='btn bloquear'>Bloquear</a>";
-                    } else {
-                        echo "<a href='desbloquear.php?CI=$CI' class='btn desbloquear'>Desbloquear</a>";
-                    }
-
-                    echo "</td>";
-                    echo "</tr>";
+                                <a href='mostrarusuario.php?CI=$CI'>
+                                    <button class='mostrar'>Mostrar</button>
+                                </a>
+                            </td>
+                          </tr>";
                 }
             } else {
-                echo "<tr><td colspan='7' style='color:#666;'>No hay usuarios registrados</td></tr>";
+                echo "<tr>
+                        <td colspan='7' class='sin-registros'>No hay usuarios registrados</td>
+                      </tr>";
             }
+
             $conn->close();
             ?>
-            </tbody>
         </table>
     </div>
 
     <div class="boton-centro">
-        <a href="crearusuario.php" class="nuevo">Nuevo Usuario</a>
+        <a href="crearusuario.php">
+            <button class="nuevo">Nuevo usuario</button>
+        </a>
     </div>
 </div>
 

@@ -139,7 +139,6 @@
     <script>
         document.getElementById("CrearUsuario").addEventListener("submit", function(event) {
             event.preventDefault();
-            var formulario = this;
 
             var a = document.getElementById("CI");
             var b = document.getElementById("Nombre");
@@ -205,6 +204,7 @@
                 return;
             }
 
+            
             if (f.value.trim() == "") {
                 mostrarAlerta("El campo Estado no puede ir vacío", f);
                 return;
@@ -214,7 +214,7 @@
                 return;
             }
 
-            formulario.submit();
+            this.submit();
         });
     </script>
 

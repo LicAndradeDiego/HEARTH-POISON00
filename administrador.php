@@ -343,24 +343,6 @@ main{
         
 
     </div>
-    <div class="card">
-
-            <div class="icono"><img src="imagenes/analitica.png" alt=""></div>
-
-            <h2>Ventas</h2>
-
-            <p>
-                Analiza ventas, ingresos y rendimiento
-                comercial de manera rápida.
-            </p>
-
-            <a href="ventas/leerventa.php" class="btn">
-                Ver ventas →
-            </a>
-
-        </div>
-
-    </div>
 
 
 
