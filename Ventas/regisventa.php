@@ -110,10 +110,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['accion'])) {
                     $nombreProd = $item['nombre'];
                     $costoTotalCalculado += (float)$item['costototal'];
 
-                    $stmtUpdateStock->bind_param("is", $cant, $codigo);
+                    $stmtUpdateStock->bind_param("ii", $cant, $codigo);
                     $stmtUpdateStock->execute();
 
-                    $stmtCheckStock->bind_param("s", $codigo);
+                    $stmtCheckStock->bind_param("i", $codigo);
                     $stmtCheckStock->execute();
                     $resNuevoStock = $stmtCheckStock->get_result();
 
@@ -133,8 +133,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['accion'])) {
             $costoFinal = isset($_POST['costoTotal']) ? (float)$_POST['costoTotal'] : $costoTotalCalculado;
             $metodoPago = $_POST['Metodo'] ?? 'Efectivo';
 
+            // CORREGIDO: "ventas" en plural y nombres de variables adaptados
             $stmtVenta = $conn->prepare("
-                INSERT INTO venta (pedidos_id, costoTotal, estado, metodo)
+                INSERT INTO ventas (pedidos_id, costoTotal, estado, metodo)
                 VALUES (?, ?, 'Aceptado', ?)
             ");
             $stmtVenta->bind_param("ids", $id_pedido, $costoFinal, $metodoPago);

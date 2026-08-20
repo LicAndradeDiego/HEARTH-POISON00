@@ -190,8 +190,8 @@ if($resultado){
     echo "<p>$mensaje</p>";
 }
 ?>
+    <a class="boton" href="/HEARTH-POISON00/usuario/paginasesion.php">Iniciar Sesión</a>
 
-    <a class="boton" href="leerusuario.php">Volver</a>
 
 </div>
 

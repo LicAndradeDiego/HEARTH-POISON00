@@ -30,6 +30,7 @@
             border-radius: 18px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.6);
         }
+        
 
         h2 {
             text-align: center;
@@ -109,11 +110,18 @@
         <label for="costoTotal">Costo Total</label>
         <input type="number" step="0.01" placeholder="COSTO TOTAL" name="costoTotal" id="costoTotal">
 
-        <label for="Estado">Estado</label>
-        <input type="text" placeholder="ESTADO" name="Estado" id="Estado" value="Aceptado">
+        <label for="Estado">Estado:</label>
+        <select name="Estado" id="Estado">
+            <option value="">SELECCIONAR ESTADO</option>
+            <option value="Pendiente">Pendiente</option>
+            <option value="En proceso">En proceso</option>
+            <option value="Entregado">Entregado</option>
+            <option value="Cancelado">Cancelado</option>
+        </select>
+
 
         <label for="Metodo">Método de Pago</label>
-        <input type="text" placeholder="MÉTODO DE PAGO" name="Metodo" id="Metodo" value="Efectivo">
+        <input type="text" placeholder="MÉTODO DE PAGO" name="Metodo" id="Metodo" >
 
         <input class="button" type="submit" value="Registrar Venta">
     </form>

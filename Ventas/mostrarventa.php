@@ -4,19 +4,21 @@ $username = "root";
 $password = "";
 $bdname = "proyetocuba";
 
-$conexion = new mysqli($servername,$username, $password,$bdname);
+$conexion = new mysqli($servername, $username, $password, $bdname);
 
-if ($conexion->connect_error){
+if ($conexion->connect_error) {
     die("Conexión fallida: " . $conexion->connect_error);
 }
 
 $venta = null;
 
-if (isset($_GET['pedidos_id'])) {$pedidos_id = $_GET['pedidos_id'];$sql = "SELECT * FROM ventas WHERE pedidos_id='$pedidos_id'";
+if (isset($_GET['pedidos_id'])) {
+    $pedidos_id = $conexion->real_escape_string($_GET['pedidos_id']);
+    $sql = "SELECT * FROM ventas WHERE pedidos_id='$pedidos_id'";
     $resultado = $conexion->query($sql);
 
-    if ($resultado &&$resultado->num_rows > 0) {
-        $venta =$resultado->fetch_assoc();
+    if ($resultado && $resultado->num_rows > 0) {
+        $venta = $resultado->fetch_assoc();
     }
 }
 ?>
@@ -124,4 +126,22 @@ h1 {
 <?php
 if ($venta) {
     echo "<h1>Datos de la Venta</h1>";
-    echo "<div class='dato'><span>ID Pedido</span> " . htmlspecialchars($venta['pedidos_id'])
+    echo "<div class='dato'><span>ID Pedido</span> " . htmlspecialchars($venta['pedidos_id']) . "</div>";
+    echo "<div class='dato'><span>Costo Total</span> Bs. " . htmlspecialchars($venta['costoTotal']) . "</div>";
+    echo "<div class='dato'><span>Estado</span> " . htmlspecialchars($venta['estado']) . "</div>";
+    echo "<div class='dato'><span>Método de Pago</span> " . htmlspecialchars($venta['metodo']) . "</div>";
+} else {
+    echo "<h1 class='error'>Venta no encontrada</h1>";
+}
+
+$conexion->close();
+?>
+
+<div class="boton-centro">
+    <a class="boton" href="leerventa.php">Volver</a>
+</div>
+
+</div>
+
+</body>
+</html>
