@@ -26,7 +26,7 @@
             
             <div class="cards-grid">
                 
-                <!-- PRODUCTO 1: Acqua Di Gio -->
+                <!-- PRODUCTO 1: Acqua Di Gio (ID/Código: 1) -->
                 <div class="product-card">
                     <a href="productos/productosinfo/acqua.php" class="card-link">
                         <div class="img-container">
@@ -38,10 +38,10 @@
                             <div class="precio">Bs. 550</div>
                         </div>
                     </a>
-                    <button class="btn-add" onclick="agregarAlCarrito('Acqua Di Gio', 550)">Añadir al Carrito</button>
+                    <button class="btn-add" onclick="agregarAlCarrito('ACQUA DI GIO', 550, '1')">Añadir al carrito</button>
                 </div>
 
-                <!-- PRODUCTO 2: Versace Eros -->
+                <!-- PRODUCTO 2: Versace Eros (ID/Código: 2) -->
                 <div class="product-card">
                     <a href="productos/productosinfo/eros.php" class="card-link">
                         <div class="img-container">
@@ -53,10 +53,10 @@
                             <div class="precio">Bs. 650</div>
                         </div>
                     </a>
-                    <button class="btn-add" onclick="agregarAlCarrito('Versace Eros', 650)">Añadir al Carrito</button>
+                    <button class="btn-add" onclick="agregarAlCarrito('VERSACE EROS', 650, '2')">Añadir al carrito</button>
                 </div>
 
-                <!-- PRODUCTO 3: Le Beau Paradise -->
+                <!-- PRODUCTO 3: Le Beau Paradise (ID/Código: 3) -->
                 <div class="product-card">
                     <a href="productos/productosinfo/paradise.php" class="card-link">
                         <div class="img-container">
@@ -68,10 +68,10 @@
                             <div class="precio">Bs. 700</div>
                         </div>
                     </a>
-                    <button class="btn-add" onclick="agregarAlCarrito('Le Beau Paradise', 700)">Añadir al Carrito</button>
+                    <button class="btn-add" onclick="agregarAlCarrito('LE BEAU PARADISE', 700, '3')">Añadir al carrito</button>
                 </div>
 
-                <!-- PRODUCTO 4: Bleu De Chanel -->
+                <!-- PRODUCTO 4: Bleu De Chanel (ID/Código: 4) -->
                 <div class="product-card">
                     <a href="productos/productosinfo/bleu.php" class="card-link">
                         <div class="img-container">
@@ -83,7 +83,7 @@
                             <div class="precio">Bs. 980</div>
                         </div>
                     </a>
-                    <button class="btn-add" onclick="agregarAlCarrito('Bleu De Chanel', 980)">Añadir al Carrito</button>
+                    <button class="btn-add" onclick="agregarAlCarrito('Bleu De Chanel', 980, '4')">Añadir al Carrito</button>
                 </div>
 
             </div>
@@ -91,11 +91,11 @@
     </main>
 
     <!-- CARRITO LATERAL -->
-    <div id="cart-overlay" class="cart-overlay" onclick="cerrarCarrito()"></div>
+    <div id="cart-overlay" class="cart-overlay"></div>
     <div id="side-cart" class="side-cart">
         <div class="cart-header">
             <h3>Mi Carrito</h3>
-            <span class="btn-close" onclick="cerrarCarrito()">&times;</span>
+            <span class="btn-close" onclick="cerrarSidebar()">&times;</span>
         </div>
 
         <div class="cart-body" id="cart-items">
@@ -111,60 +111,14 @@
                 <span>Total:</span>
                 <span id="cart-total">Bs. 0.00</span>
             </div>
-            <button class="btn-checkout" onclick="window.location.href='Ventas/crearpedido.php'">Finalizar compra</button>
+            <button class="btn-checkout" id="comprar">Finalizar compra</button>
             <button class="btn-vaciar" onclick="vaciarCarrito()">Vaciar carrito</button>
         </div>
     </div>
 
     <?php include 'footer.php'; ?>
 
-    <script>
-        let total = 0;
-        let cantidad = 0;
-
-        function agregarAlCarrito(nombre, precio) {
-            const itemsContainer = document.getElementById('cart-items');
-            
-            if (cantidad === 0) {
-                itemsContainer.innerHTML = '';
-            }
-
-            const itemHTML = `
-                <div class="cart-item">
-                    <div>
-                        <strong>${nombre}</strong>
-                        <div style="color: #888; font-size: 12px;">Bs. ${precio}</div>
-                    </div>
-                </div>
-            `;
-            itemsContainer.innerHTML += itemHTML;
-
-            cantidad++;
-            total += precio;
-
-            document.getElementById('cart-count').innerText = cantidad;
-            document.getElementById('cart-total').innerText = 'Bs. ' + total.toFixed(2);
-
-            abrirCarrito();
-        }
-
-        function abrirCarrito() {
-            document.getElementById('side-cart').classList.add('active');
-            document.getElementById('cart-overlay').classList.add('active');
-        }
-
-        function cerrarCarrito() {
-            document.getElementById('side-cart').classList.remove('active');
-            document.getElementById('cart-overlay').classList.remove('active');
-        }
-
-        function vaciarCarrito() {
-            cantidad = 0;
-            total = 0;
-            document.getElementById('cart-items').innerHTML = '<p class="empty-msg">Tu carrito está vacío.</p>';
-            document.getElementById('cart-count').innerText = '0';
-            document.getElementById('cart-total').innerText = 'Bs. 0.00';
-        }
-    </script>
+    <!-- JS EXTERNO VINCULADO -->
+    <script src="carrito/carrito.js"></script>
 </body>
 </html>

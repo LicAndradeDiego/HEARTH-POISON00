@@ -467,3 +467,32 @@ footer {
     color: inherit;
     display: block;
 }
+.side-cart {
+    position: fixed;
+    top: 0;
+    right: -350px; /* Oculto fuera de pantalla */
+    width: 300px;
+    height: 100%;
+    background: #111;
+    transition: right 0.3s ease;
+    z-index: 1000;
+}
+
+.side-cart.active {
+    right: 0; /* Aparece al activarse */
+}
+
+.cart-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+}
+
+.cart-overlay.active {
+    display: block;
+}

@@ -126,7 +126,7 @@ p {
     <p><?php echo isset($error) ? $error : 'Error desconocido'; ?></p>
 <?php endif; ?>
 
-<a class="boton" href="leerpedido.php">Volver a Pedidos</a>
+<a class="boton" href="../paginaproductos.php">Volver a Productos</a>
 </div>
 
 </body>

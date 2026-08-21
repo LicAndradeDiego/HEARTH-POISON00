@@ -32,7 +32,7 @@
             <p class="precio">
                 Bs.650
             </p>
-            <a href="../pedidos/crearpedido.php">
+            <a href="../../pedidos/crearpedido.php">
                 <button>Añadir al carrito</button>
             </a>    </section>
     </section>

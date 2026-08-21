@@ -126,17 +126,8 @@ $resultado_productos = $conexion->query($sql_productos);
         <label for="Fecha">Fecha:</label>
         <input type="date" name="Fecha" id="Fecha" value="<?php echo date('Y-m-d'); ?>" readonly>
 
-        <label for="Estado">Estado:</label>
-        <select name="Estado" id="Estado">
-            <option value="">SELECCIONAR ESTADO</option>
-            <option value="Pendiente">Pendiente</option>
-            <option value="En proceso">En proceso</option>
-            <option value="Entregado">Entregado</option>
-            <option value="Cancelado">Cancelado</option>
-        </select>
-
         <label for="nombre_vendedor">Nombre Vendedor:</label>
-        <input type="text" placeholder="NOMBRE DE VENDEDOR" name="nombre_vendedor" id="nombre_vendedor" value="<?php echo htmlspecialchars($nombre); ?>" readonly>
+        <input type="text" placeholder="PENDIENTE" name="nombre_vendedor" id="nombre_vendedor" value="<?php echo htmlspecialchars($nombre); ?>" readonly>
 
         <label for="Direccion">Dirección:</label>
         <input type="text" placeholder="DIRECCIÓN" name="Direccion" id="Direccion">
@@ -155,7 +146,6 @@ $resultado_productos = $conexion->query($sql_productos);
 
         var b = document.getElementById("Nombre");
         var c = document.getElementById("Fecha");
-        var d = document.getElementById("Estado");
         var e = document.getElementById("Direccion");
         var f = document.getElementById("Telefono");
 
@@ -185,10 +175,6 @@ $resultado_productos = $conexion->query($sql_productos);
         }
         if (c.value.trim() == "") {
             mostrarAlerta("El campo Fecha no puede ir vacío", c);
-            return;
-        }
-        if (d.value.trim() == "") {
-            mostrarAlerta("El campo Estado no puede ir vacío", d);
             return;
         }
         if (e.value.trim() == "") {

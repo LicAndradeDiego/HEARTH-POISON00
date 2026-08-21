@@ -13,7 +13,7 @@
 </head>
 <body>
 
-  <?php include 'header.php'; ?>
+  <?php include '../header.php'; ?>
 
     <main>
         <section class="animate-fade">
@@ -180,7 +180,8 @@
         </section>
     </main>
 
-    <?php include 'footer.php'; ?>
+    <?php include '../footer.php'; ?>
+    <script src="../../carrito/carrito.js"></script>
 
 </body>
 </html>

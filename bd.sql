@@ -64,7 +64,11 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`codigo`, `nombre`, `precio`, `descripcion`, `stock`, `costo`) VALUES
-(1234, 'waza', 3123, 'sfasfas', 3, 3);
+(1234, 'waza', 3123, 'sfasfas', 3, 3),
+('1', 'ACQUA DI GIO', 550, 'GIORGIO ARMANI - Eau de Parfum', 10, 400),
+('2', 'VERSACE EROS', 650, 'VERSACE - Eau de Parfum', 10, 480),
+('3', 'LE BEAU PARADISE', 700, 'JEAN PAUL GAULTIER - Eau de Parfum', 10, 520),
+('4', 'BLEU DE CHANEL', 980, 'CHANEL - Eau de Parfum', 10, 750);
 
 -- --------------------------------------------------------
 
