@@ -28,7 +28,7 @@ Duración: Prolongada con una presencia elegante y equilibrada.
             <p class="precio">
                 Bs.700
             </p>
-            <a href="../pedidos/crearpedido.php">
+            <a href="../../pedidos/crearpedido.php">
                 <button>Añadir al carrito</button>
             </a>         </section>
     </section>
