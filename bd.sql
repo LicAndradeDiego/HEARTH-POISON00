@@ -1,16 +1,9 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Servidor: 127.0.0.1
--- Tiempo de generación: 15-08-2026 a las 00:25:47
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.0.30
+CREATE DATABASE IF NOT EXISTS `proyetocuba` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `proyetocuba`;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -18,16 +11,15 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `proyetocuba`
---
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `carrito`
 --
 
-CREATE TABLE `carrito` (  `productos_codigo` int(11) NOT NULL,  `pedidos_id` int(11) NOT NULL,  `cantidad` int(11) DEFAULT NULL,  `costototal` int(11) DEFAULT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+CREATE TABLE `carrito` (
+  `productos_codigo` int(11) NOT NULL,
+  `pedidos_id` int(11) NOT NULL,
+  `cantidad` int(11) DEFAULT NULL,
+  `costototal` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -125,35 +117,20 @@ CREATE TABLE `ventas` (
 -- Índices para tablas volcadas
 --
 
---
--- Indices de la tabla `carrito`
---
 ALTER TABLE `carrito`
   ADD PRIMARY KEY (`productos_codigo`,`pedidos_id`),
   ADD KEY `fk_carrito_pedidos_idx` (`pedidos_id`),
   ADD KEY `fk_carrito_productos_idx` (`productos_codigo`);
 
---
--- Indices de la tabla `pedidos`
---
 ALTER TABLE `pedidos`
   ADD PRIMARY KEY (`id`);
 
---
--- Indices de la tabla `productos`
---
 ALTER TABLE `productos`
   ADD PRIMARY KEY (`codigo`);
 
---
--- Indices de la tabla `usuario`
---
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`CI`);
 
---
--- Indices de la tabla `ventas`
---
 ALTER TABLE `ventas`
   ADD KEY `fk_ventas_pedidos_idx` (`pedidos_id`);
 
@@ -161,9 +138,6 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
---
--- AUTO_INCREMENT de la tabla `pedidos`
---
 ALTER TABLE `pedidos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
@@ -171,18 +145,13 @@ ALTER TABLE `pedidos`
 -- Restricciones para tablas volcadas
 --
 
---
--- Filtros para la tabla `carrito`
---
 ALTER TABLE `carrito`
   ADD CONSTRAINT `fk_carrito_pedidos` FOREIGN KEY (`pedidos_id`) REFERENCES `pedidos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_carrito_productos` FOREIGN KEY (`productos_codigo`) REFERENCES `productos` (`codigo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
---
--- Filtros para la tabla `ventas`
---
 ALTER TABLE `ventas`
   ADD CONSTRAINT `fk_ventas_pedidos` FOREIGN KEY (`pedidos_id`) REFERENCES `pedidos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
