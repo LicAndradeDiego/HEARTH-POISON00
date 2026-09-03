@@ -34,10 +34,12 @@
             <p class="precio">
                 Bs. 550
             </p>
-            <a href="../../pedidos/crearpedido.php">
+
+            <!-- Redirección corregida subiendo 1 nivel hacia la carpeta 'productos' -->
+            <button type="button" onclick="window.location.href='../paginaproductos.php'">Volver al catálogo</button>
+              <a href="../../pedidos/crearpedido.php">
                 <button>Añadir al carrito</button>
-            </a>
-            
+            </a> 
         </section>
     </section>
 

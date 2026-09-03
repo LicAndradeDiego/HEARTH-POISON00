@@ -36,4 +36,4 @@ Duración: Excelente fijación con una proyección equilibrada y refinada.
     </section>
     <?php include '../../footer.php'; ?>
 </body>
-</html>
+</html> 

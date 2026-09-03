@@ -30,7 +30,7 @@ Duración: Prolongada con una presencia elegante y equilibrada.
             </p>
             <a href="../../pedidos/crearpedido.php">
                 <button>Añadir al carrito</button>
-            </a>         </section>
+            </a>      </section>
     </section>
     <?php include '../../footer.php'; ?>
 </body>
