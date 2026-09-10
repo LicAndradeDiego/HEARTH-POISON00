@@ -1,3 +1,8 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) { session_start(); }
+$rolHeader = strtolower(trim($_SESSION['rol'] ?? $_SESSION['Rol'] ?? ''));
+$baseHeader = '/HEARTH-POISON00';
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -51,9 +56,14 @@
             transition: color 0.3s ease;
         }
 
-        nav a:hover, nav a.active {
-            color: #ffffff;
-        }
+        nav a:hover, nav a.active { color: #ffffff; }
+        .nav-menu{position:relative}
+        .nav-menu-btn{background:transparent;border:0;color:#999;font-size:13px;text-transform:uppercase;letter-spacing:2px;cursor:pointer;padding:0;font-weight:400}
+        .nav-menu-btn:hover{color:#fff}
+        .nav-submenu{display:none;position:absolute;top:24px;left:50%;transform:translateX(-50%);min-width:190px;background:#111;border:1px solid #292929;border-radius:10px;padding:8px;box-shadow:0 15px 35px rgba(0,0,0,.6)}
+        .nav-menu:hover .nav-submenu{display:block}
+        .nav-submenu a{display:block;padding:10px;text-align:left;font-size:11px}
+        .nav-submenu a:hover{background:#1d1d1d;border-radius:7px}
 
         /* ==============================
            BOTÓN E ÍCONO DEL CARRITO
@@ -246,17 +256,37 @@
             }
         }
     </style>
-</head>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <link rel="stylesheet" href="<?php echo $baseHeader; ?>/urielgood.css">
+        <style>.campo-error{border-color:#ff4d4d!important;box-shadow:0 0 0 2px rgba(255,77,77,.12)}</style>
+    </head>
 <body>
 
     <header>
         <h1>HEARTH POISON</h1>
         
         <nav>
-            <a href="/HEARTH-POISON00/paginaprincipal.php">Inicio</a>
-<a href="/HEARTH-POISON00/paginanosotros.php">Nosotros</a>
-<a href="/HEARTH-POISON00/paginaproductos.php">Productos</a>
-<a href="/HEARTH-POISON00/usuario/paginasesion.php">Iniciar Sesión</a>
+            <a href="<?php echo $baseHeader; ?>/paginaprincipal.php">Inicio</a>
+            <a href="<?php echo $baseHeader; ?>/paginanosotros.php">Nosotros</a>
+            <a href="<?php echo $baseHeader; ?>/paginaproductos.php">Productos</a>
+            <a href="<?php echo $baseHeader; ?>/comentarios.php">Comentarios</a>
+            <?php if ($rolHeader === 'administrador'): ?>
+                <div class="nav-menu">
+                    <button type="button" class="nav-menu-btn">Administración ▾</button>
+                    <div class="nav-submenu">
+                        <a href="<?php echo $baseHeader; ?>/administrador.php">Panel</a>
+                        <a href="<?php echo $baseHeader; ?>/usuario/leerusuario.php">Usuarios</a>
+                        <a href="<?php echo $baseHeader; ?>/productos/leerproducto.php">Productos</a>
+                        <a href="<?php echo $baseHeader; ?>/pedidos/leerpedido.php">Pedidos</a>
+                        <a href="<?php echo $baseHeader; ?>/Ventas/leerventa.php">Ventas</a>
+                        <a href="<?php echo $baseHeader; ?>/reportes.php">Reportes</a>
+                    </div>
+                </div>
+            <?php elseif ($rolHeader === 'vendedor'): ?>
+                <a href="<?php echo $baseHeader; ?>/vendedor.php">Panel vendedor</a>
+            <?php else: ?>
+                <a href="<?php echo $baseHeader; ?>/usuario/paginasesion.php">Iniciar Sesión</a>
+            <?php endif; ?>
         </nav>
 
         <!-- Botón del Carrito en la esquina superior derecha -->
@@ -292,7 +322,7 @@
 
             <h3 id="totalCarrito">Total: Bs 0.00</h3>
 
-            <button id="comprar" type="button" onclick="window.location.href='pedidos/crearpedido.php'">
+            <button id="comprar" type="button" onclick="window.location.href='<?php echo $baseHeader; ?>/pedidos/crearpedido.php'">
                 Finalizar compra
             </button>
 
@@ -322,5 +352,6 @@
         }
     </script>
 
+<script src="<?php echo $baseHeader; ?>/validacion.js"></script>
 </body>
 </html>

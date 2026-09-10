@@ -18,7 +18,7 @@ CREATE TABLE `carrito` (
   `productos_codigo` int(11) NOT NULL,
   `pedidos_id` int(11) NOT NULL,
   `cantidad` int(11) DEFAULT NULL,
-  `costototal` int(11) DEFAULT NULL
+  `costototal` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -112,7 +112,7 @@ INSERT INTO `usuario` (`CI`, `nombre`, `direccion`, `celular`, `rol`, `estado`) 
 
 CREATE TABLE `ventas` (
   `pedidos_id` int(11) NOT NULL,
-  `costoTotal` int(11) DEFAULT NULL,
+  `costoTotal` decimal(10,2) DEFAULT NULL,
   `estado` varchar(45) DEFAULT NULL,
   `metodo` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -136,7 +136,8 @@ ALTER TABLE `usuario`
   ADD PRIMARY KEY (`CI`);
 
 ALTER TABLE `ventas`
-  ADD KEY `fk_ventas_pedidos_idx` (`pedidos_id`);
+  ADD KEY `fk_ventas_pedidos_idx` (`pedidos_id`),
+  ADD KEY `idx_ventas_estado` (`estado`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas

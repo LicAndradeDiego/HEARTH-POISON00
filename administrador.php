@@ -1,7 +1,7 @@
 
 <?php
-session_start();
-$nombre = $_SESSION['nombre'];
+require_once __DIR__ . '/usuario/auth_admin.php';
+$nombre = $_SESSION['nombre'] ?? '';
 ?>
 
 <!DOCTYPE html>
@@ -354,7 +354,7 @@ main{
                 comercial de manera rápida.
             </p>
 
-            <a href="ventas/leerventa.php" class="btn">
+            <a href="Ventas/leerventa.php" class="btn">
                 Ver ventas →
             </a>
 

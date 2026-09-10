@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once __DIR__ . '/usuario/auth_vendedor.php';
 
 // Verificación de sesión y nombre
 $nombre = $_SESSION['nombre'] ?? $_SESSION['Nombre'] ?? 'Vendedor';
