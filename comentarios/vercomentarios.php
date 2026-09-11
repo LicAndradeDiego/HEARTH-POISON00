@@ -10,7 +10,7 @@
     $arch=fopen("comentario.txt","r");
     while( !feof($arch)){
         $leer=fgets($arch);
-        $ver=n12br($leer);
+        $ver=nl2br($leer);
         echo $ver;
             }
             
