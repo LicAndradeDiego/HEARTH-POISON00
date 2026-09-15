@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/usuario/auth_vendedor.php';
+session_start();
 
 // Verificación de sesión y nombre
 $nombre = $_SESSION['nombre'] ?? $_SESSION['Nombre'] ?? 'Vendedor';
@@ -475,12 +475,12 @@ $resPedidos = $conn->query($sqlPedidos);
                     <div class="bg">
                         <div class="bc">
                             <h2>Pedido #<?php echo sprintf('%03d', $ped['id']); ?></h2>
-                            <p><?php echo htmlspecialchars($ped['Nombre']); ?></p>
+                            <p><?php echo htmlspecialchars($ped['nombre']); ?></p>
                         </div>
                         <div class="bd">
                             <h3>Bs <?php echo number_format($ped['total_calculado'] ? $ped['total_calculado'] : 0, 2); ?></h3>
-                            <p><?php echo date('d M Y', strtotime($ped['Fecha'])); ?></p>
-                            <p><?php echo date('h:i A', strtotime($ped['Fecha'])); ?></p>
+                            <p><?php echo date('d M Y', strtotime($ped['fecha'])); ?></p>
+                            <p><?php echo date('h:i A', strtotime($ped['fecha'])); ?></p>
                         </div>
                     </div>
 

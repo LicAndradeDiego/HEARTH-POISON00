@@ -270,8 +270,8 @@ a {
                         </span>
                     </td>
                     <td>".htmlspecialchars($fila['nombre_vendedor'])."</td>
-                    <td>".htmlspecialchars($fila['Direccion'])."</td>
-                    <td>".htmlspecialchars($fila['Telefono'])."</td>
+                    <td>".htmlspecialchars($fila['direccion'])."</td>
+                    <td>".htmlspecialchars($fila['telefono'])."</td>
                     <td>
                         <a href='actualizarpedido.php?id=$id'>
                             <button class='editar'>Editar</button>
