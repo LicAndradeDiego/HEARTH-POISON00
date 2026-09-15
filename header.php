@@ -1,6 +1,6 @@
 <?php
 if (session_status() === PHP_SESSION_NONE) { session_start(); }
-$rolHeader = strtolower(trim($_SESSION['rol'] ?? $_SESSION['Rol'] ?? ''));
+$rol = isset($_SESSION['rol']) ? strtolower(trim($_SESSION['rol'])) : '';
 $baseHeader = '/HEARTH-POISON00';
 ?>
 <!DOCTYPE html>
